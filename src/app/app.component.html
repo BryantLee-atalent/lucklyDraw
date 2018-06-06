@@ -1,5 +1,5 @@
 <header class="header">
-  <img class="header__logo"  src="../assets/logo-atalent.png" >
+  <img class="header__logo"  src="assets/logo-atalent.png" >
 </header>
 <div class="container page-main">
   <h1 class="title--main">
@@ -7,7 +7,7 @@
   </h1>
   <h2 class="title--small">Where the magic happens...</h2>
   <div class="l-centered js-applicants-container">
-    <div class="group l-offset-btm-l l-gutter-2 js-applicants-wrap" data-ajax-url="http://lucky-draw-atalent.devmxmm.cn/lucky-draw/ajax/get-participants" data-conference-id="1">
+    <div class="group l-offset-btm-l l-gutter-2 js-applicants-wrap"  data-conference-id="1">
 
       <div *ngFor="let user of data" class="l-transition-width  l-grid-16 l-grid-mobile-33  js-participant">
         <div class="box">
@@ -36,7 +36,7 @@
     </button>
   </div>
   <div class="modal-body" style="min-height: 300px">
-    <img src="{{lucklyUser.headImgUrl}}">
+    <img src="{{lucklyUser.headImgUrl}}"/>
     <p>{{lucklyUser.nickName}}</p>
   </div>
   <div class="modal-footer">
@@ -44,4 +44,3 @@
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click'); drawStart(content)">Next Winner!</button>
   </div>
 </ng-template>
-
