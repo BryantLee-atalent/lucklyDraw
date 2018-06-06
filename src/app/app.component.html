@@ -1,0 +1,47 @@
+<header class="header">
+  <img class="header__logo"  src="../assets/logo-atalent.png" >
+</header>
+<div class="container page-main">
+  <h1 class="title--main">
+    aTalent conference
+  </h1>
+  <h2 class="title--small">Where the magic happens...</h2>
+  <div class="l-centered js-applicants-container">
+    <div class="group l-offset-btm-l l-gutter-2 js-applicants-wrap" data-ajax-url="http://lucky-draw-atalent.devmxmm.cn/lucky-draw/ajax/get-participants" data-conference-id="1">
+
+      <div *ngFor="let user of data" class="l-transition-width  l-grid-16 l-grid-mobile-33  js-participant">
+        <div class="box">
+          <div class="box__image js-participant-bg"  [id]="'user'+user.id" >
+            <img class="box__image js-participant-bg"  src="{{user.headImgUrl}}">
+            <!--<p style="margin-top: 138px; margin-left: -25px">{{user.nickName}}</p>-->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="is-centered l-offset-btm-l js-btn-draw-wrap">
+    <button [ngStyle]="{'disabled' : drawing === true ? 'true' : 'false'}" (click)="drawStart(content)" class="js-btn-draw button" href="#">
+      Draw!
+    </button>
+  </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: center">Winner</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="min-height: 300px">
+    <img src="{{lucklyUser.headImgUrl}}">
+    <p>{{lucklyUser.nickName}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Thank You!</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click'); drawStart(content)">Next Winner!</button>
+  </div>
+</ng-template>
+
