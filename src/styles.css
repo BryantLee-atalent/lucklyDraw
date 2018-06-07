@@ -153,7 +153,9 @@ a {
 
 .l-gutter-2>div {
   padding-left: 2px;
-  padding-bottom: 2px
+  padding-bottom: 2px;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .l-gutter-5 {
@@ -203,7 +205,8 @@ a {
 
 .l-grid-7 {
   float: left;
-  width: 7.142%
+  width: 7.142%;
+  margin: 0.3%;
 }
 
 .l-grid-9 {
@@ -384,7 +387,7 @@ a {
 .header {
   display: block;
   width: 100%;
-  background: #000;
+  background: #660065;
   text-align: center
 }
 
@@ -457,7 +460,7 @@ a:hover,a:active,a:link:hover,a:link:active,a:visited:hover,a:visited:active {
 }
 
 .link--inversed:hover,.link--inversed:active,.link--inversed:link:hover,.link--inversed:link:active,.link--inversed:visited:hover,.link--inversed:visited:active {
-  color: #000
+  color: #66065
 }
 
 .text--shadowed {
@@ -561,7 +564,7 @@ a:hover,a:active,a:link:hover,a:link:active,a:visited:hover,a:visited:active {
   font-size: 16px;
   line-height: 16px;
   font-weight: bold;
-  color: #000;
+  color: #66065;
   text-align: center;
   height: 0px
 }
@@ -584,7 +587,7 @@ a:hover,a:active,a:link:hover,a:link:active,a:visited:hover,a:visited:active {
   -webkit-transition: width 2s;
   -moz-transition: width 2s;
   transition: width 2s;
-  border: 2px solid #000;
+  border: 2px solid #66065;
   background-color: #fff;
   padding: 0px !important
 }
@@ -750,3 +753,47 @@ input[type="text"]:focus,input[type="text"].is-valid,input[type="email"]:focus,i
 }
 
 /*# sourceMappingURL=main.css.map */
+.winner-img{
+  width: 170px;
+  height: 170px;
+  position: absolute;
+  left: 50%;
+  margin-left: -85px;
+  margin-top: -50px;
+  top: 50%;
+}
+.winner-name{
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin-top: 10px;
+}
+.choose-img{
+  margin: 0 auto;
+  width: 100%;
+  height: 100%
+}
+.btn-outline-dark{
+  color: #660065;
+  border-color: #660065;
+}
+.btn-outline-dark:hover{
+  background-color: #660065;
+}
+.modal-footer {
+  justify-content: center;
+}
+.code-box{
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.code-box img{
+  width: 100%;
+  margin: 20px auto;
+  display:block;
+}
+.group{
+  width: 60%;
+  float: left;
+}

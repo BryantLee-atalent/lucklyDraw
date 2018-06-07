@@ -10,7 +10,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
   data: any;
-
+  speechData = '2018/06/07 10:30:00';
+  speechNum = 1;
   drawing = false;
   lucklyUser: any;
   count = 0;
@@ -18,6 +19,12 @@ export class AppComponent {
   lastId =  - 1 ; // 上一次选中的User
   constructor(private http: HttpClient, private modalService: NgbModal) {
       this.getAllUser();
+
+    const date = new Date();
+    const date2 = new Date(this.speechData);
+    if ((date.getTime() - date2.getTime()) > 0) {
+      this.speechNum = 2;
+    }
   }
 
   openVerticallyCentered(content) {
@@ -30,10 +37,9 @@ export class AppComponent {
 
   getAllUser() {
     const me = this;
-    const url = 'https://wechat.atalent.xyz/backend/api/followers/LucklyUser';
+    const url = 'https://wechat.atalent.com/backend/api/followers/LucklyUser?speech=' + me.speechNum;
     me.http.get(url).subscribe((data) => {
         me.data = data;
-
         if (!me.drawing) {
           setTimeout(() => {
             me.getAllUser();
@@ -64,9 +70,11 @@ export class AppComponent {
 
 
       if (me.lastId !== -1) {
-        document.getElementById('user' + me.lastId).style.backgroundColor = 'white';
+        document.getElementById('user' + me.lastId).style.boxShadow = '0px 0px 35px 6px #fff';
+        document.getElementById('user' + userId).style.zIndex = '0';
       }
-      document.getElementById('user' + userId).style.backgroundColor = 'black';
+      document.getElementById('user' + userId).style.boxShadow = '1px 1px 30px 9px #660064';
+      document.getElementById('user' + userId).style.zIndex = '999';
 
     if (me.count === luckyNum) {
     //  clearTimeout(me.drawIng);
@@ -75,23 +83,23 @@ export class AppComponent {
       if (me.count >= 0 && me.count < length) { // 第一轮转速最快
         setTimeout(p => {
           me.drawIng(luckyNum, length, content);
-        }, 20);
+        }, 2);
       } else if (me.count >= length && me.count < length * 2) {
         setTimeout(p => {
           me.drawIng(luckyNum, length, content);
-        }, 100);
+        }, 18);
       } else if (me.count >= length * 2 && me.count < length * 3) {
         setTimeout(p => {
           me.drawIng(luckyNum, length, content);
-        }, 300);
+        }, 36);
       } else if (me.count >= length * 3 && me.count < length * 4) {
         setTimeout(p => {
           me.drawIng(luckyNum, length, content);
-        }, 500);
+        }, 72);
       } else {
         setTimeout(p => {
           me.drawIng(luckyNum, length, content);
-        }, 800);
+        }, 144);
       }
 
       if (me.num === length - 1) {

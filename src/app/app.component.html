@@ -7,27 +7,24 @@
   </h1>
   <h2 class="title--small">Where the magic happens...</h2>
   <div class="l-centered js-applicants-container">
+    <div class="code-box"> <img src="assets/WechatIMG127.png" *ngIf="speechNum === 1"><img src="assets/WechatIMG128.png" *ngIf="speechNum === 2"></div>
     <div class="group l-offset-btm-l l-gutter-2 js-applicants-wrap"  data-conference-id="1">
-
-      <div *ngFor="let user of data" class="l-transition-width  l-grid-16 l-grid-mobile-33  js-participant">
-        <div class="box">
-          <div class="box__image js-participant-bg"  [id]="'user'+user.id" >
-            <img class="box__image js-participant-bg"  src="{{user.headImgUrl}}">
+      <div *ngFor="let user of data" class="l-transition-width  l-grid-7 l-grid-mobile-33  js-participant">
+        <div class="box" style="width: 100%;height: 100%;margin: 0;padding: 0">
+          <div class="box__image js-participant-bg"  [id]="'user'+user.id"  style="text-align: center;width: 100%;height: 100%;margin: 0;padding: 0">
+            <img class="box__image js-participant-bg choose-img"  src="{{user.headImgUrl}}" style="width: 100%;height: 100%;margin: 0;padding: 0">
             <!--<p style="margin-top: 138px; margin-left: -25px">{{user.nickName}}</p>-->
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
-  <div class="is-centered l-offset-btm-l js-btn-draw-wrap">
-    <button [ngStyle]="{'disabled' : drawing === true ? 'true' : 'false'}" (click)="drawStart(content)" class="js-btn-draw button" href="#">
+  <div class="is-centered l-offset-btm-l js-btn-draw-wrap" style="margin-bottom: 30px;width: 100%;display: inline-block;">
+    <button [ngStyle]="{'disabled' : drawing === true ? 'true' : 'false'}" (click)="drawStart(content)" class="js-btn-draw button" href="#" style="padding: 11px 23px;">
       Draw!
     </button>
   </div>
 </div>
-
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" style="text-align: center">Winner</h4>
@@ -36,11 +33,15 @@
     </button>
   </div>
   <div class="modal-body" style="min-height: 300px">
-    <img src="{{lucklyUser.headImgUrl}}"/>
-    <p>{{lucklyUser.nickName}}</p>
+    <h2 style="text-align: center; color: #660065">
+      Congratulations!
+    </h2>
+    <img src="{{lucklyUser.headImgUrl}}" class="winner-img"/>
+    <p class="winner-name">{{lucklyUser.nickName}}</p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Thank You!</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click'); drawStart(content)">Next Winner!</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click'); drawStart(content)" style="background: #660065;
+    color: #fff;">Next Winner!</button>
   </div>
 </ng-template>
