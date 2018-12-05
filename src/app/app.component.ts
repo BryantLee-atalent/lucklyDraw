@@ -10,13 +10,14 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
   data: any;
-  speechData = '2018/06/07 10:30:00';
+  speechData = '2018/06/08 10:30:00';
   speechNum = 1;
   drawing = false;
   lucklyUser: any;
   count = 0;
   num = 0; // 计数器
   lastId =  - 1 ; // 上一次选中的User
+  classN: number;
   constructor(private http: HttpClient, private modalService: NgbModal) {
       this.getAllUser();
 
@@ -40,7 +41,16 @@ export class AppComponent {
     const url = 'https://wechat.atalent.com/backend/api/followers/LucklyUser?speech=' + me.speechNum;
     me.http.get(url).subscribe((data) => {
         me.data = data;
-        if (!me.drawing) {
+        if(me.data.length < 13){
+            me.classN = 1;
+        }else if(me.data.length >= 13 && me.data.length < 30){
+            me.classN = 2;
+        }else if(me.data.length >= 31 && me.data.length < 73){
+          me.classN = 3;
+        }else {
+            me.classN = 4;
+        };
+      if (!me.drawing) {
           setTimeout(() => {
             me.getAllUser();
           }, 2000); // 2S 刷新一次后台数据 抽奖时暂停
@@ -60,8 +70,9 @@ export class AppComponent {
 
     // 生成中奖粉丝
     const luckyNum  = Math.floor(Math.random() * (max - min + 1) + min);
-
-    me.drawIng(luckyNum, length, content);
+    if(length > 0){
+      me.drawIng(luckyNum, length, content);
+    }
   }
 
   drawIng(luckyNum: number, length: number, content: any) {

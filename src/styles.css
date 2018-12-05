@@ -221,7 +221,8 @@ a {
 
 .l-grid-11 {
   float: left;
-  width: 11.1111%
+  width: 11.1111%;
+  margin: 0.5%;
 }
 
 .l-grid-12 {
@@ -236,7 +237,8 @@ a {
 
 .l-grid-16 {
   float: left;
-  width: 16.6666%
+  width: 16.6666%;
+  margin: 1%;
 }
 
 .l-grid-20 {
@@ -246,7 +248,8 @@ a {
 
 .l-grid-25 {
   float: left;
-  width: 25%
+  width: 25%;
+  margin: 3%;
 }
 
 .l-grid-33 {
